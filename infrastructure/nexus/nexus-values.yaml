@@ -1,0 +1,68 @@
+# see https://github.com/helm/charts/tree/master/stable/sonatype-nexus
+#
+#
+statefulset:
+  enabled: true
+replicaCount: 1
+
+nexus:
+  nexusPort: 8081
+  service:
+          type: NodePort
+
+#service:
+#  enabled: true 
+#  name: nexus-svc
+#  portName: http
+#  targetPort: 8081
+#  port: 80
+
+nexusProxy:
+  enabled: false
+  svcName: nexus-svc
+  targetPort: 8082
+  port: 32001
+  env:
+  #  nexusDockerHost: container.example.com
+    nexusHttpHost: nexus.local
+    cloudIamAuthEnabled: false
+
+nexusBackup:
+  enabled: false
+  #  env:
+  #  targetBucket: "gs://my-nexus-backup"
+  #persistence:
+  #  storageClass: standard
+
+ingress:
+  enabled: true
+  annotations:
+          #kubernetes.io/ingress.class: gce
+          #kubernetes.io/tls-acme: true
+    apiVersion: "extensions/v1beta1"
+    hostName: nexus.local
+    path: "/"
+    tls:
+      enabled: false
+
+
+persistence:
+  enabled: true
+  storageClass: nexus-pv
+  storageSize: 1Gi
+
+resources:
+  requests:
+    cpu: 50m
+    # Based on https://support.sonatype.com/hc/en-us/articles/115006448847#mem
+    # and https://twitter.com/analytically/status/894592422382063616:
+    #   Xms == Xmx
+    #   Xmx <= 4G
+    #   MaxDirectMemory >= 2G
+    #   Xmx + MaxDirectMemory <= RAM * 2/3 (hence the request for 4800Mi)
+    #   MaxRAMFraction=1 is not being set as it would allow the heap
+    #     to use all the available memory.
+    memory: 2048Mi
+  limits:
+    cpu: "2000m"
+    memory: "4096Mi"
