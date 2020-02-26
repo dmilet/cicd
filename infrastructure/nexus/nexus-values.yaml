@@ -9,6 +9,17 @@ nexus:
   nexusPort: 8081
   service:
           type: NodePort
+  livenessProbe:
+          initialDelaySeconds: 180
+          periodSeconds: 60
+          failureThreshold: 20
+          timeoutSeconds: 180
+  readinessProbe:
+          initialDelaySeconds: 180
+          periodSeconds: 60
+          failureThreshold: 20
+          timeoutSeconds: 180
+
 
 #service:
 #  enabled: true 
