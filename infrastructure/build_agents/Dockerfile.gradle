@@ -1,0 +1,20 @@
+ARG MAVEN_VERSION=3.6.3
+
+# Gradle does not work with JDK14
+# https://github.com/gradle/gradle/issues/10248
+#ARG JDK_VERSION=14
+ARG JDK_VERSION=13
+
+ARG GRADLE_VERSION=6.2.1
+
+FROM maven:${MAVEN_VERSION}-jdk-${JDK_VERSION}
+USER root
+RUN yum install -y wget unzip && yum clean all && \
+wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip && \
+mkdir /opt/gradle && \
+unzip -d /opt/gradle gradle-${GRADLE_VERSION}-bin.zip && \
+chmod -R a+rx /opt/gradle/gradle-${GRADLE_VERSION} && \
+useradd gradle
+
+USER gradle
+ENV PATH /opt/gradle/gradle-${GRADLE_VERSION}/bin:$PATH
