@@ -9,6 +9,7 @@ ARG JDK_VERSION=13
 
 FROM maven:${MAVEN_VERSION}-jdk-${JDK_VERSION}
 ARG GRADLE_VERSION=6.2.1
+LABEL maintainer="david.milet@gmail.com"
 
 USER root
 RUN yum install -y wget unzip && yum clean all && \
