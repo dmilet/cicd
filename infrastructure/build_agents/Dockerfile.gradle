@@ -1,3 +1,5 @@
+LABEL maintainer="david.milet@gmail.com"
+
 ARG MAVEN_VERSION=3.6.3
 
 # Gradle does not work with JDK14
