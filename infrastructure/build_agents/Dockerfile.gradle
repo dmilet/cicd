@@ -5,9 +5,9 @@ ARG MAVEN_VERSION=3.6.3
 #ARG JDK_VERSION=14
 ARG JDK_VERSION=13
 
+FROM maven:${MAVEN_VERSION}-jdk-${JDK_VERSION}
 ARG GRADLE_VERSION=6.2.1
 
-FROM maven:${MAVEN_VERSION}-jdk-${JDK_VERSION}
 USER root
 RUN yum install -y wget unzip && yum clean all && \
 wget https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip && \
