@@ -1,5 +1,3 @@
-LABEL maintainer="david.milet@gmail.com"
-
 ARG MAVEN_VERSION=3.6.3
 
 # Gradle does not work with JDK14
@@ -8,6 +6,8 @@ ARG MAVEN_VERSION=3.6.3
 ARG JDK_VERSION=13
 
 FROM maven:${MAVEN_VERSION}-jdk-${JDK_VERSION}
+
+# This ARG must be after the FROM, else its value is lost after FROM
 ARG GRADLE_VERSION=6.2.1
 LABEL maintainer="david.milet@gmail.com"
 
