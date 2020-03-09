@@ -1,0 +1,18 @@
+apiVersion: v1
+data:
+  client_max_body_size: "300m"
+  hsts: "false"
+  map-hash-bucket-size: "128"
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"client_max_body_size":"0","hsts":"false","map-hash-bucket-size":"128"},"kind":"ConfigMap","metadata":{"annotations":{},"creationTimestamp":"2020-03-02T02:40:53Z","labels":{"addonmanager.kubernetes.io/mode":"EnsureExists"},"name":"nginx-load-balancer-conf","namespace":"kube-system","resourceVersion":"129506","selfLink":"/api/v1/namespaces/kube-system/configmaps/nginx-load-balancer-conf","uid":"3a483a80-da32-4379-aa10-82dede29e001"}}
+  creationTimestamp: "2020-03-02T02:40:53Z"
+  labels:
+    addonmanager.kubernetes.io/mode: EnsureExists
+  name: nginx-load-balancer-conf
+  namespace: kube-system
+  resourceVersion: "130478"
+  selfLink: /api/v1/namespaces/kube-system/configmaps/nginx-load-balancer-conf
+  uid: 3a483a80-da32-4379-aa10-82dede29e001

@@ -45,8 +45,8 @@ master:
   healthProbesReadinessTimeout: 5
   healthProbeLivenessPeriodSeconds: 10
   healthProbeReadinessPeriodSeconds: 10
-  healthProbeLivenessFailureThreshold: 5
-  healthProbeReadinessFailureThreshold: 3
+  healthProbeLivenessFailureThreshold: 50
+  healthProbeReadinessFailureThreshold: 30
   healthProbeLivenessInitialDelay: 90
   healthProbeReadinessInitialDelay: 60
   slaveListenerPort: 50000
@@ -67,6 +67,8 @@ master:
   extraPorts: []
   installPlugins:
     - kubernetes:1.19.0
+    - kubernetes-cd:2.3.0
+    - blueocean:1.22.0
     - workflow-aggregator:2.6
     - workflow-job:2.35
     - credentials-binding:1.20

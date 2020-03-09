@@ -6,7 +6,9 @@ statefulset:
 replicaCount: 1
 
 nexus:
+  imageTag: 3.21.1
   nexusPort: 8081
+  dockerPort: 5003
   service:
           type: NodePort
   livenessProbe:
@@ -21,6 +23,7 @@ nexus:
           timeoutSeconds: 180
 
 
+
 #service:
 #  enabled: true 
 #  name: nexus-svc
@@ -29,13 +32,14 @@ nexus:
 #  port: 80
 
 nexusProxy:
-  enabled: false
-  svcName: nexus-svc
-  targetPort: 8082
-  port: 32001
+  enabled: true
+  svcName: nexusproxy-svc
+  targetPort: 8080
+  port: 8080
   env:
-  #  nexusDockerHost: container.example.com
+    nexusDockerHost: docker.local
     nexusHttpHost: nexus.local
+    enforceHttps: false
     cloudIamAuthEnabled: false
 
 nexusBackup:
@@ -48,19 +52,21 @@ nexusBackup:
 ingress:
   enabled: true
   annotations:
-          #kubernetes.io/ingress.class: gce
-          #kubernetes.io/tls-acme: true
-    apiVersion: "extensions/v1beta1"
-    hostName: nexus.local
-    path: "/"
-    tls:
-      enabled: false
-
+    #kubernetes.io/ingress.class: gce
+    #kubernetes.io/tls-acme: true
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/proxy-body-size: "500m"
+    ingress.kubernetes.io/proxy-body-size: "500m"
+  apiVersion: "extensions/v1beta1"
+  path: "/"
+  tls:
+    enabled: true
+    secretName: nexus-tls
 
 persistence:
   enabled: true
   storageClass: nexus-pv
-  storageSize: 1Gi
+  storageSize: 5Gi
 
 resources:
   requests:
