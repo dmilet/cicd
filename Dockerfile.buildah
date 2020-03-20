@@ -1,0 +1,4 @@
+#
+FROM quay.io/buildah/stable
+COPY infrastructure/nexus/tls.crt /etc/pki/ca-trust/source/anchors/nexus-ingress.crt
+RUN update-ca-trust
