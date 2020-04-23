@@ -1,0 +1,20 @@
+authenticators: "authn-k8s/minikube,authn"
+dataKey: "uCCZ0zs0ZWjwpzyNlCYoLot+nbeQfBZS+2+cz9BIeFs="  # docker run --rm -it cyberark/conjur data-key generate
+#databaseUrl: ""
+
+image:
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+postgres:
+  persistentVolume:
+    create: true
+    size: "1Gi"
+    storageClass: "conjur-pv"
+
+service:
+  external:
+    enabled: false
+
+ssl:
+  hostname: conjur.local

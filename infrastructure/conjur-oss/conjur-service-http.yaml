@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: conjur-oss
+    app.kubernetes.io/component: service
+    app.kubernetes.io/name: conjur-oss
+    chart: conjur-oss-1.3.8
+    heritage: Helm
+    release: conjur-oss
+  name: conjur-oss-http
+  namespace: conjur-project
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: conjur-oss
+    app.kubernetes.io/component: service
+    app.kubernetes.io/name: conjur-oss
+    chart: conjur-oss-1.3.8
+    heritage: Helm
+    release: conjur-oss
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}
+
