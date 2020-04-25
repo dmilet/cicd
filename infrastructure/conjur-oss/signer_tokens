@@ -1,0 +1,14 @@
+Loaded policy 'root'
+{
+  "created_roles": {
+    "default:user:signer-admin@signer": {
+      "id": "default:user:signer-admin@signer",
+      "api_key": "24yb3td13sf9nb2eg2vygj5gh632ngsk63f4j9sa1vjwpjq38h5pw4"
+    },
+    "default:host:signer/signer-app": {
+      "id": "default:host:signer/signer-app",
+      "api_key": "3vyzkb01p3d7xr3q26krz3v01fzr12bxn6s2ayx5cen4a3v32kgmszb"
+    }
+  },
+  "version": 1
+}

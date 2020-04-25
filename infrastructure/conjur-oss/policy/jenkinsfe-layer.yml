@@ -1,0 +1,6 @@
+- !layer
+  id: jenkinsfe-layer
+  - !host jenkins.local
+  - !grant
+    role: !layer
+    member: !host jenkins.local

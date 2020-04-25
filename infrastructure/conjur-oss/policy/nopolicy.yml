@@ -1,0 +1,5 @@
+- !policy
+  id: jenkins
+  body:
+    - !delete
+      record: !policy jenkins

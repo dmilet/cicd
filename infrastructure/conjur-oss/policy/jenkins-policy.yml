@@ -1,0 +1,17 @@
+- !policy
+  id: jenkins
+  body:
+    # Define a human user, a non-human identity that represents an application, and a secret
+  - !user jenkins-so
+  - !host jenkins.local
+  - !variable secretVar
+  - !permit
+    # Give permissions to the human user to update the secret and fetch the secret.
+    role: !user jenkins-so
+    privileges: [read, update, execute]
+    resource: !variable secretVar
+  - !permit
+    # Give permissions to the non-human identity to fetch the secret.
+    role: !host jenkins.local
+    privileges: [read, execute]
+    resource: !variable secretVar

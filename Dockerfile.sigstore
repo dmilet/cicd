@@ -1,6 +1,0 @@
-FROM httpd:latest
-COPY infrastructure/sigstore/tls.crt /etc/pki/ca-trust/source/anchors/sigstore-ingress.crt
-RUN update-ca-trust && \
-dnf makecache && \
-dnf install -y jq && \
-dnf clean all
