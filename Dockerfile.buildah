@@ -2,11 +2,11 @@ FROM quay.io/buildah/stable
 COPY infrastructure/tls/tls.crt /etc/pki/ca-trust/source/anchors/minikube-ingress.crt
 
 RUN update-ca-trust && \
-dnf makecache && \
-dnf install -y podman skopeo gnupg2 && \
-dnf clean all && \
-mkdir /app
+#dnf makecache && \
+#dnf install -y podman skopeo gnupg2 && \
+#dnf clean all && \
+mkdir -p /app/sigstore
 
-COPY buildah-image-entrypoint.sh /app/buildah-image-entrypoint.sh
+COPY images/buildah/* /
 RUN chmod a+x /app/buildah-image-entrypoint.sh
 CMD ["/app/buildah-image-entrypoint.sh"]
