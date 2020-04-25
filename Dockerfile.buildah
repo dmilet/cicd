@@ -1,5 +1,5 @@
 FROM quay.io/buildah/stable
-COPY infrastructure/hashicorpvault/tls.crt /etc/pki/ca-trust/source/anchors/minikube-ingress.crt
+COPY infrastructure/tls/tls.crt /etc/pki/ca-trust/source/anchors/minikube-ingress.crt
 
 RUN update-ca-trust && \
 dnf makecache && \
