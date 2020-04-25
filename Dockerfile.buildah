@@ -1,6 +1,11 @@
 FROM quay.io/buildah/stable
-COPY infrastructure/nexus/tls.crt /etc/pki/ca-trust/source/anchors/nexus-ingress.crt
+COPY infrastructure/hashicorpvault/tls.crt /etc/pki/ca-trust/source/anchors/minikube-ingress.crt
+
 RUN update-ca-trust && \
 dnf makecache && \
 dnf install -y podman skopeo gnupg2 && \
-dnf clean all
+dnf clean all && \
+mkdir /app
+
+COPY buildah-image-entrypoint.sh /app/buildah-image-entrypoint.sh
+CMD ["/app/buildah-image-entrypoint.sh"]
