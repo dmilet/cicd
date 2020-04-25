@@ -1,0 +1,15 @@
+{
+  "unseal_keys_b64": [
+    "JnrtZ7k5eH6+Kt8tVyZF/zMTCLAdIQ2tDGSaq4UOkqU="
+  ],
+  "unseal_keys_hex": [
+    "267aed67b939787ebe2adf2d572645ff331308b01d210dad0c649aab850e92a5"
+  ],
+  "unseal_shares": 1,
+  "unseal_threshold": 1,
+  "recovery_keys_b64": [],
+  "recovery_keys_hex": [],
+  "recovery_keys_shares": 5,
+  "recovery_keys_threshold": 3,
+  "root_token": "s.e4gTr58cxLJrcT8WxCFieCef"
+}
