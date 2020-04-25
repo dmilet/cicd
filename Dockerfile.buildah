@@ -8,4 +8,5 @@ dnf clean all && \
 mkdir /app
 
 COPY buildah-image-entrypoint.sh /app/buildah-image-entrypoint.sh
+RUN chmod a+x /app/buildah-image-entrypoint.sh
 CMD ["/app/buildah-image-entrypoint.sh"]
