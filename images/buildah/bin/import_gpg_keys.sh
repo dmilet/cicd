@@ -13,4 +13,3 @@ INJECTED_GPG_PUBLIC_KEY_FILE=${INJECTED_GPG_KEY_FILE:-/vault/secrets/gpg-public-
   gpg2 --list-keys
 }
 
-cat -

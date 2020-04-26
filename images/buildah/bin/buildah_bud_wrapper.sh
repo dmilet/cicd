@@ -1,6 +1,7 @@
 #!/bin/sh
 
-STORAGE="--storage-driver=vfs"
+#STORAGE="--storage-driver=vfs"
+STORAGE=""
 BUILDAH_CMD="buildah $STORAGE"
 
 # $1 : full image name
@@ -13,3 +14,6 @@ container=$($BUILDAH_CMD from $1)
 $BUILDAH_CMD commit -f docker $container $1
 
 $BUILDAH_CMD images
+
+#$BUILDAH_CMD login -u $IMG_DEST_USR -p $IMG_DEST_PWD 
+#$BUILDAH_CMD push $1
