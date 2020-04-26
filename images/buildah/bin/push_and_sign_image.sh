@@ -28,6 +28,11 @@ IMG_DEST_PWD=${IMG_DEST_PWD:-Abcd1234}
   podman login -u $IMG_DEST_USR -p $IMG_DEST_PWD $IMG_DEST_HOSTNAME
 }
 
+# if source image is local, assume name is already set for destination
+[[ $IMG_SOURCE_METHOD == "container-storage:" ]] && {
+  IMG_SOURCE_HOSTNAME=$IMG_DEST_HOSTNAME
+}
+
 skopeo --debug copy --sign-by $GPG_KEY_ID \
 	${IMG_SOURCE_METHOD}${IMG_SOURCE_HOSTNAME}/${IMAGE_NAME} \
 	${IMG_DEST_METHOD}${IMG_DEST_HOSTNAME}/${IMAGE_NAME} \
