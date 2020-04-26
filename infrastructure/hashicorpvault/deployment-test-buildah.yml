@@ -1,0 +1,51 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: buildahtestoverlay
+  labels:
+    app: buildahtestoverlay
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: buildahtestoverlay
+  template:
+    metadata:
+      labels:
+        app: buildahtestoverlay
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/role: "jenkins"
+        vault.hashicorp.com/agent-inject-secret-gpg-private-key.b64: "secret/data/jenkins/gpg"
+        vault.hashicorp.com/agent-inject-template-gpg-private-key.b64: |
+          {{- with secret "secret/data/jenkins/gpg" -}}
+          {{ .Data.data.privatekey }}
+          {{- end -}}
+        vault.hashicorp.com/agent-inject-secret-gpg-public-key.b64: "secret/data/jenkins/gpg"
+        vault.hashicorp.com/agent-inject-template-gpg-public-key.b64: |
+          {{- with secret "secret/data/jenkins/gpg" -}}
+          {{ .Data.data.publickey }}
+          {{- end -}}
+    spec:
+      serviceAccountName: buildagent
+      containers:
+      - name: buildah
+        image: docker.local/davidmilet/cicd:buildah-with-nexus-ingress-cert
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          privileged: true
+          #capabilities:
+          #  add:
+          #  - ALL
+        tty: true
+#        command:
+#        - /usr/local/bin/buildah-image-entrypoint.sh
+#        volumeMounts:
+#        - mountPath: /dev/fuse
+#          name: dev-fuse
+#        volumes:
+#       - name: dev-fuse
+#          hostPath:
+#            path: /dev/fuse
+
