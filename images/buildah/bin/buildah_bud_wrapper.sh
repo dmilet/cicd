@@ -11,3 +11,5 @@ container=$($BUILDAH_CMD from $1)
 
 # re-commit as docker format (default is OCI)
 $BUILDAH_CMD commit -f docker $container $1
+
+$BUILDAH_CMD images

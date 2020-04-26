@@ -6,7 +6,7 @@ IMAGE_NAME=${IMAGE_NAME:-davidmilet/cicd:buildah-with-nexus-ingress-cert}
 
 
 IMG_SOURCE_HOSTNAME=${IMG_SOURCE_HOSTNAME:-""}
-IMG_SOURCE_METHOD=${IMG_SOURCE_METHOD:-"container-storage:"}
+IMG_SOURCE_METHOD=${IMG_SOURCE_METHOD:-"containers-storage:"}
 IMG_SOURCE_USR=${IMG_SOURCE_USR:-""}
 IMG_SOURCE_PWD=${IMG_SOURCE_PWD:-""}
 IMG_DEST_HOSTNAME=${IMG_DEST_HOSTNAME:-docker.local} 
@@ -29,7 +29,7 @@ IMG_DEST_PWD=${IMG_DEST_PWD:-Abcd1234}
 }
 
 # if source image is local, assume name is already set for destination
-[[ $IMG_SOURCE_METHOD == "container-storage:" ]] && {
+[[ $IMG_SOURCE_METHOD == "containers-storage:" ]] && {
   IMG_SOURCE_HOSTNAME=$IMG_DEST_HOSTNAME
 }
 
