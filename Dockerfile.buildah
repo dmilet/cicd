@@ -5,11 +5,9 @@ RUN update-ca-trust && \
 dnf makecache && \
 dnf install -y podman skopeo gnupg2 && \
 dnf clean all && \
-mkdir -p /app/sigstore && \
 mkdir -p /vault
 
-COPY images/buildah/app  /app
+COPY images/buildah/bin /usr/local/bin
 COPY images/buildah/etc /etc
-#COPY vault /vault
-RUN chmod a+x /app/*.sh
-CMD ["/app/buildah-image-entrypoint.sh"]
+RUN chmod a+x /usr/local/bin/*.sh
+CMD ["/usr/local/bin/buildah-image-entrypoint.sh"]

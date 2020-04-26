@@ -1,4 +1,4 @@
 docker:
   docker.local:
     sigstore: https://nexus.local/repository/sigstore
-    sigstore-staging: file:///app/sigstore
+    sigstore-staging: file:///var/local/sigstore
