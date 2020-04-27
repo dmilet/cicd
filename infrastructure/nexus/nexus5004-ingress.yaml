@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  generation: 1
+  labels:
+    app.kubernetes.io/instance: nexus
+    app.kubernetes.io/name: nexus
+    component: server
+  name: nexus
+  namespace: nexus-project
+spec:
+  rules:
+  - host: docker2.local
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nexus-svc-5004
+          servicePort: 5004
+
+  tls:
+  - hosts:
+    - docker2.local
+    secretName: nexus-tls

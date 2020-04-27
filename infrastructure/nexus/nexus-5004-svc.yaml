@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: sonatype-nexus-5004
+    chart: sonatype-nexus-2.1.0
+    fullname: nexus-sonatype-nexus
+    heritage: Helm
+    release: nexus
+  name: nexus-svc-5004
+  namespace: nexus-project
+spec:
+  ports:
+  - name: nexus-svc-5004
+    port: 5004
+    protocol: TCP
+    targetPort: 5004
+  selector:
+    app: sonatype-nexus
+    release: nexus
+  sessionAffinity: None
+  type: NodePort
