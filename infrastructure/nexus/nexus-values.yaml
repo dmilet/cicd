@@ -6,7 +6,7 @@ statefulset:
 replicaCount: 1
 
 nexus:
-  imageTag: 3.22.1
+  imageTag: 3.23.0
   imageName: sonatype/nexus3
   nexusPort: 8081
   dockerPort: 5003
