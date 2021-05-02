@@ -1,0 +1,19 @@
+## Very good article
+https://gist.github.com/Soarez/9688998
+
+## Prep the CA
+# Generate CA key and cert
+openssl req -new -x509 -days 3650 -config ca.conf -out ca.crt
+
+# initialize CA database
+echo '01' > serial; touch index.txt; mkdir newcerts
+
+## Request new Cert
+openssl req -new -out ingress-tls-local.csr -config ingress-tls-local.conf
+
+## Sign with the CA
+openssl ca -config sign.ca.conf -extfile ingress-tls-local.conf -extensions my_extensions -out ingress-tls-local.crt -infiles ingress-tls-local.csr 
+
+## Create secret in K8s
+kubectl create secret tls nexus-tls --key ingress-tls-local.key --cert ingress-tls-local.crt --namespace nexus-project
+

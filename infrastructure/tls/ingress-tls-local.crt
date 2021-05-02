@@ -1,0 +1,97 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 1 (0x1)
+        Signature Algorithm: sha256WithRSAEncryption
+        Issuer: C=US, ST=Virginia, L=Manassas, O=Acme Ltd, OU=CA, CN=CA
+        Validity
+            Not Before: May  2 12:35:43 2021 GMT
+            Not After : May  2 12:35:43 2023 GMT
+        Subject: C=US, ST=Virginia, O=Acme Ltd, CN=*.local
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                RSA Public-Key: (2048 bit)
+                Modulus:
+                    00:b6:6b:f3:6e:73:c7:d8:65:a4:b5:3d:a6:7d:ae:
+                    93:ee:23:b6:96:47:f9:2a:ab:72:de:09:a2:28:4d:
+                    5f:2b:4c:7b:74:e3:c1:86:38:a4:b4:0e:3a:ed:42:
+                    58:a1:38:c8:08:26:42:39:94:e1:30:4a:1d:41:fc:
+                    71:44:94:cc:23:74:a3:a4:2c:81:5a:8b:2c:26:d7:
+                    a4:ef:9b:b4:76:6a:5d:a7:96:eb:cc:f7:8b:cd:cc:
+                    90:31:59:66:39:55:04:8a:46:25:9b:82:0c:b8:b0:
+                    ec:07:1e:25:82:84:76:2c:87:9f:68:bf:40:2b:8b:
+                    d6:9e:1c:c5:5d:9b:00:c7:dc:67:c0:09:9d:66:39:
+                    c4:88:7f:d1:57:0f:86:8e:cc:cb:c4:38:30:95:9b:
+                    ef:91:b8:d6:b9:f7:aa:60:1b:ed:65:ed:e7:f7:b4:
+                    08:d6:25:4a:34:61:b7:74:ce:37:e0:29:c1:0f:38:
+                    83:7a:4c:f1:e3:eb:84:84:87:c4:17:8d:dc:67:24:
+                    7c:d2:1e:97:53:86:56:2e:0b:16:15:97:9a:13:23:
+                    d0:51:8c:ab:e1:da:ac:18:77:e7:26:68:bb:68:c8:
+                    93:85:6e:89:31:2c:0e:5e:ab:25:e8:a8:f0:2d:e8:
+                    75:14:3f:c5:ab:d8:98:a1:0e:34:8c:db:ce:8c:48:
+                    8c:4b
+                Exponent: 65537 (0x10001)
+        X509v3 extensions:
+            X509v3 Subject Alternative Name: 
+                DNS:*.local, DNS:nexus.local, DNS:docker.local, DNS:jenkins.local, DNS:vault.local, DNS:docker2.local
+            X509v3 Basic Constraints: critical
+                CA:FALSE
+            X509v3 Key Usage: critical
+                Digital Signature, Certificate Sign
+    Signature Algorithm: sha256WithRSAEncryption
+         2e:1b:f0:6e:73:6e:e6:fa:12:22:31:5b:2d:9e:b0:19:7b:4b:
+         6d:fe:91:c5:03:2f:a5:61:e6:86:93:dd:36:ef:6d:c8:ad:b9:
+         b1:f8:aa:87:60:4c:c7:10:6d:9a:f8:2c:70:41:d4:ce:3b:db:
+         70:1a:94:75:1a:7d:30:e2:5d:55:34:d1:7b:fb:10:a1:84:9b:
+         11:b6:95:57:c1:ae:d1:82:e1:5d:62:23:9f:0e:cc:30:f5:97:
+         54:61:45:8b:9b:df:71:d1:fa:0a:54:26:14:39:c2:47:69:fd:
+         bb:72:51:59:ca:88:60:7b:38:da:8f:c3:e9:07:ec:71:9f:5e:
+         cd:c1:dc:eb:cd:2e:93:d3:d8:55:eb:8e:ca:0a:68:9d:25:fb:
+         f3:ba:13:de:ef:25:fe:f0:1a:c8:d6:df:a4:1d:c9:f6:2f:cc:
+         38:25:a5:11:76:b8:24:25:09:ce:a6:e7:42:27:f2:33:24:d0:
+         e6:ae:8f:36:f3:4e:38:1d:3b:07:d8:1a:6e:84:e9:af:cf:1a:
+         c7:05:70:4b:94:c7:84:d6:84:d8:e1:ff:c4:20:54:e6:d4:fa:
+         9f:92:f5:81:48:e1:98:8c:8d:70:d9:45:7e:60:15:6d:c1:a2:
+         c6:c5:f8:a4:fc:a1:9d:ae:9d:31:9f:05:f6:24:42:db:2c:d6:
+         05:72:33:a3:5c:db:d8:56:49:37:51:50:c2:a6:75:1c:e2:42:
+         a6:20:74:d3:26:0f:12:ae:3f:bf:06:e4:f4:95:6b:7f:15:5e:
+         49:db:c3:c8:e5:49:9b:6d:ae:b7:29:30:27:2d:8b:53:13:20:
+         e9:db:db:77:86:c8:f5:05:3f:0a:6b:8e:50:6e:4f:f4:2b:74:
+         2a:89:68:5d:73:86:8a:c6:d6:7b:29:9b:eb:98:c5:0d:e3:88:
+         2e:ae:c5:2c:3f:8a:fb:fe:4a:3a:2d:bb:ec:99:db:c1:9c:34:
+         e4:2b:df:b8:50:c8:f1:fd:e6:10:4a:1d:88:a9:f2:5c:41:8b:
+         cd:8e:64:7a:2b:51:2f:74:c0:5b:24:63:90:b2:2c:e9:af:28:
+         48:60:2e:b7:64:d0:81:65:4b:74:dd:d2:a6:b3:b0:6a:4f:62:
+         6f:7e:d6:4a:4f:ef:d2:a5:89:20:0c:12:4c:26:97:00:07:72:
+         56:56:7e:ea:6f:10:e7:ff:8e:d0:cd:a9:18:29:82:03:d6:d8:
+         19:b0:d9:94:b7:e2:e9:d7:19:34:66:89:24:54:e0:67:34:c5:
+         07:24:ff:28:53:de:bd:84:4f:63:01:2f:c6:26:f9:61:4a:6f:
+         c2:6c:6c:7c:3b:b3:64:79:b0:bc:29:dc:1a:88:c4:34:f9:18:
+         9a:bd:23:b5:b0:9a:90:6d
+-----BEGIN CERTIFICATE-----
+MIIEmjCCAoKgAwIBAgIBATANBgkqhkiG9w0BAQsFADBgMQswCQYDVQQGEwJVUzER
+MA8GA1UECAwIVmlyZ2luaWExETAPBgNVBAcMCE1hbmFzc2FzMREwDwYDVQQKDAhB
+Y21lIEx0ZDELMAkGA1UECwwCQ0ExCzAJBgNVBAMMAkNBMB4XDTIxMDUwMjEyMzU0
+M1oXDTIzMDUwMjEyMzU0M1owRTELMAkGA1UEBhMCVVMxETAPBgNVBAgMCFZpcmdp
+bmlhMREwDwYDVQQKDAhBY21lIEx0ZDEQMA4GA1UEAwwHKi5sb2NhbDCCASIwDQYJ
+KoZIhvcNAQEBBQADggEPADCCAQoCggEBALZr825zx9hlpLU9pn2uk+4jtpZH+Sqr
+ct4JoihNXytMe3TjwYY4pLQOOu1CWKE4yAgmQjmU4TBKHUH8cUSUzCN0o6QsgVqL
+LCbXpO+btHZqXaeW68z3i83MkDFZZjlVBIpGJZuCDLiw7AceJYKEdiyHn2i/QCuL
+1p4cxV2bAMfcZ8AJnWY5xIh/0VcPho7My8Q4MJWb75G41rn3qmAb7WXt5/e0CNYl
+SjRht3TON+ApwQ84g3pM8ePrhISHxBeN3GckfNIel1OGVi4LFhWXmhMj0FGMq+Ha
+rBh35yZou2jIk4VuiTEsDl6rJeio8C3odRQ/xavYmKEONIzbzoxIjEsCAwEAAaN6
+MHgwWAYDVR0RBFEwT4IHKi5sb2NhbIILbmV4dXMubG9jYWyCDGRvY2tlci5sb2Nh
+bIINamVua2lucy5sb2NhbIILdmF1bHQubG9jYWyCDWRvY2tlcjIubG9jYWwwDAYD
+VR0TAQH/BAIwADAOBgNVHQ8BAf8EBAMCAoQwDQYJKoZIhvcNAQELBQADggIBAC4b
+8G5zbub6EiIxWy2esBl7S23+kcUDL6Vh5oaT3TbvbcitubH4qodgTMcQbZr4LHBB
+1M4723AalHUafTDiXVU00Xv7EKGEmxG2lVfBrtGC4V1iI58OzDD1l1RhRYub33HR
++gpUJhQ5wkdp/btyUVnKiGB7ONqPw+kH7HGfXs3B3OvNLpPT2FXrjsoKaJ0l+/O6
+E97vJf7wGsjW36QdyfYvzDglpRF2uCQlCc6m50In8jMk0OaujzbzTjgdOwfYGm6E
+6a/PGscFcEuUx4TWhNjh/8QgVObU+p+S9YFI4ZiMjXDZRX5gFW3BosbF+KT8oZ2u
+nTGfBfYkQtss1gVyM6Nc29hWSTdRUMKmdRziQqYgdNMmDxKuP78G5PSVa38VXknb
+w8jlSZttrrcpMCcti1MTIOnb23eGyPUFPwprjlBuT/QrdCqJaF1zhorG1nspm+uY
+xQ3jiC6uxSw/ivv+Sjotu+yZ28GcNOQr37hQyPH95hBKHYip8lxBi82OZHorUS90
+wFskY5CyLOmvKEhgLrdk0IFlS3Td0qazsGpPYm9+1kpP79KliSAMEkwmlwAHclZW
+fupvEOf/jtDNqRgpggPW2Bmw2ZS34unXGTRmiSRU4Gc0xQck/yhT3r2ET2MBL8Ym
++WFKb8JsbHw7s2R5sLwp3BqIxDT5GJq9I7WwmpBt
+-----END CERTIFICATE-----
