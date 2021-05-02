@@ -16,6 +16,9 @@ nexus:
       - host: docker.local
         port: 5003
         secretName: nexus-tls
+      - host: minikube.fios-router.home
+        port: 5003
+        secretName: nexus-tls
   env:
     - name: install4jAddVmParams
       value: "-Xms1200M -Xmx1200M -XX:MaxDirectMemorySize=2G -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
@@ -48,15 +51,15 @@ nexus:
     fsGroup: 2000
   podAnnotations: {}
   livenessProbe:
-    initialDelaySeconds: 180
+    initialDelaySeconds: 120 
     periodSeconds: 60
-    failureThreshold: 20
-    timeoutSeconds: 180
+    failureThreshold: 5
+    timeoutSeconds: 10
   readinessProbe:
-    initialDelaySeconds: 180
+    initialDelaySeconds: 120
     periodSeconds: 60
     failureThreshold: 20
-    timeoutSeconds: 180
+    timeoutSeconds: 10
 
     path: /
   # hostAliases allows the modification of the hosts file inside a container
@@ -102,13 +105,11 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-body-size: "500m"
     ingress.kubernetes.io/proxy-body-size: "500m"
   hostPath: /
-  hostRepo: nexus.local
+  hostRepo: nexus.fios-router.home
   tls: 
      - secretName: nexus-tls
        hosts:
-         - nexus.local
-         - docker.local
-         - docker-hosted.local
+         - nexus.fios-router.home
 
     
   
@@ -118,7 +119,7 @@ service:
   enabled: true
   labels: {}
   annotations: {}
-  serviceType: NodePort
+  type: NodePort
 
 
 route:
