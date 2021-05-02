@@ -1,0 +1,12 @@
+helm install nexus-repo sonatype/nexus-repository-manager
+helm repo update
+kubectl apply -f nexus-namespace.yaml
+kubectl apply -f nexus-volume.yaml
+kubectl apply -f nginx-load-balancer-conf.yaml
+kubectl apply -f nexus-tls-secret.yml
+helm install nexus -f nexus-values.yaml  sonatype/nexus-repository-manager --namespace nexus-project
+
+get admin passsword from /data/nexus-volume, 
+then change password
+
+
