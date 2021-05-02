@@ -1,1 +1,2 @@
 V	230502123543Z		01	unknown	/C=US/ST=Virginia/O=Acme Ltd/CN=*.local
+V	230502130747Z		02	unknown	/C=US/ST=Virginia/O=Acme Ltd/CN=minikube
