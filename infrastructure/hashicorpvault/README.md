@@ -3,10 +3,16 @@ Create namespace and PV for vault
 go to minikube (minikube ssh) and change permissions on /data/vault-volume so it's read/writable to userid 1000.
 On minikube docker user has uid 1000, but on vault pod, vault user has uid 1000. Vault pod runs as uid 1000 and needs write access to /data/vault-volume
 
+https://www.vaultproject.io/docs/platform/k8s/helm
+
+helm repo add hashicorp https://helm.releases.hashicorp.com
+helm search repo hashicorp/vault
+
+
 ## install Vault
 ```
-helm install vault --values helm-vault-values.yml -n vault-project \
-    https://github.com/hashicorp/vault-helm/archive/v0.5.0.tar.gz
+helm install vault --values helm-vault-values.yml hashicorp/vault  -n vault-project
+    
 ```
 Follow instructions from https://learn.hashicorp.com/vault/getting-started-k8s/minikube 
 Unseal the Vault
@@ -16,10 +22,10 @@ kubectl exec vault-0 -n vault-project -- vault operator init -key-shares=1 -key-
 $ cat cluster-keys.json
 {
   "unseal_keys_b64": [
-    "JnrtZ7k5eH6+Kt8tVyZF/zMTCLAdIQ2tDGSaq4UOkqU="
+    "Zaf78+vPJBhD+DatglQHhK2Yta5ocdyLBa64afKhVtM="
   ],
   "unseal_keys_hex": [
-    "267aed67b939787ebe2adf2d572645ff331308b01d210dad0c649aab850e92a5"
+    "65a7fbf3ebcf241843f836ad82540784ad98b5ae6871dc8b05aeb869f2a156d3"
   ],
   "unseal_shares": 1,
   "unseal_threshold": 1,
@@ -27,10 +33,11 @@ $ cat cluster-keys.json
   "recovery_keys_hex": [],
   "recovery_keys_shares": 5,
   "recovery_keys_threshold": 3,
-  "root_token": "s.e4gTr58cxLJrcT8WxCFieCef"
+  "root_token": "s.jfOGKQbN9TVk9JvYdxTaokZ2"
 }
 
-VAULT_UNSEAL_KEY=JnrtZ7k5eH6+Kt8tVyZF/zMTCLAdIQ2tDGSaq4UOkqU=
+
+VAULT_UNSEAL_KEY=Zaf78+vPJBhD+DatglQHhK2Yta5ocdyLBa64afKhVtM=
 
 $ kubectl exec vault-0 -n vault-project -- vault operator unseal $VAULT_UNSEAL_KEY
 Key             Value
@@ -40,10 +47,12 @@ Initialized     true
 Sealed          false
 Total Shares    1
 Threshold       1
-Version         1.4.0
-Cluster Name    vault-cluster-e8a88788
-Cluster ID      6ebb59b5-e774-c977-b454-4ab933f37fa0
+Version         1.9.2
+Storage Type    file
+Cluster Name    vault-cluster-b95eaef9
+Cluster ID      ae4fc369-5151-0e18-6be9-ccb55dc5225b
 HA Enabled      false
+
 
 $ kubectl get pods -n vault-project
 NAME                                    READY   STATUS    RESTARTS   AGE
@@ -53,10 +62,13 @@ vault-agent-injector-86b8df8994-dt7wj   1/1     Running   0          7m44s
 ```
 
 # ingress
+key and cert must be tls.key and tls.crt
+https://kubernetes.io/docs/concepts/services-networking/ingress/
 ```
-kubectl create secret tls vault-tls --key tls.key --cert tls.crt --namespace vault-project
+kubectl create secret tls vault --key tls.key --cert tls.crt --namespace vault-project
 
-kubectl create -f vault-ingress.yaml -n vault-project
+# ingress is created by Helm chart
+
 
 URL for UI : https://vault.local
 URL for API: https://vault.local/v1
